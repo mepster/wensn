@@ -76,43 +76,30 @@ def readSPL(dev):
 
 
 if __name__ == "__main__":
-    import os
-    import time
+    import logroll
     import datetime
+    import time
 
-    class LogRoll():
-        def __init__(self, logdir):
-            try:
-                os.stat(logdir)
-            except:
-                os.mkdir(logdir)
-            self.logdir = logdir
-            self.oldlogname = None
-            self.fp = None
-
-        def open_or_reopen(self, logname):
-            # this reopens a new file whenever the name changes
-            if (logname != self.oldlogname):
-                self.oldlogname = logname
-                if self.fp and not self.fp.closed:
-                    self.fp.close()
-                self.fp = open(self.logdir+"/"+logname, "a+")
-
+    # connect to WS1381 over USB
     dev = connect()
+
+    # set default modes: "A" weighting, "slow"
     setMode(dev)
 
-    logroll = LogRoll(logdir="logs")
+    log = logroll.LogRoll(logdir="logs")
     while True:
         now = datetime.datetime.now()
-        # new log every hour
-        logroll.open_or_reopen(now.strftime('%Y-%m-%d-%H.log'))
+        # roll over to a new log whenever the filename changes - in this case, every hour.
+        log.open_or_reopen(now.strftime('%Y-%m-%d-%H-%M.log'))
 
         dB, range, weight, speed = readSPL(dev)
         print("%.2f,%s,%s,%s"
               % (dB, weight, speed, now.strftime('%Y,%m,%d,%H,%M,%S')),
-              file = logroll.fp)
+              file = log.fp)
+        print("%.2f,%s,%s,%s"
+              % (dB, weight, speed, now.strftime('%Y,%m,%d,%H,%M,%S')))
 
-        logroll.fp.flush()
+        log.fp.flush()
         time.sleep(1)
 
 
