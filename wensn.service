@@ -1,5 +1,5 @@
 [Unit]
-Description=Sound Pressure Level Monitor
+Description=Wensn Sound Pressure Level Monitor
 After=network.target
 
 [Service]
