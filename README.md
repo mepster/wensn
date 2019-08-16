@@ -84,9 +84,9 @@ sudo systemctl enable wensn.service
 sudo systemctl start wensn.service
 ```
 
-You can check that it's active with:
+You can check that it's "active (running)" with:
 ```
-systemctl status shutdown_button.service
+systemctl status wensn.service
 ```
 
 The service runs as user pi (not root), so you have to get the device
