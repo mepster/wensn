@@ -89,7 +89,7 @@ permissions right. Alternatively, you can change the .service file so it runs as
 
 
 ## LogRoll
-I also include a python class called LogRoll. This class opens a log file so that you can write SPL values to it. If the filename you provide changes, it rolls over to a new log. I included date and hour, but not the minutes and seconds, in the filename; this way, when the hour changes, the log file rolls over. The result is a set of timestamed ("hourstamped") log files, each containing all the data for a given hour.
+I also include a python class called LogRoll. This class opens a log file so that you can write SPL values to it. If the filename you provide changes, it rolls over to a new log. I include the date and hour, but not the minutes and seconds, in the filename; this way, when the hour changes, the log file rolls over. The result is a set of timestamed ("hourstamped") log files, each containing all the data for a given hour.
 
 ## Credits:
 
