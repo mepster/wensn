@@ -3,6 +3,8 @@
 
 The Wensn WS1361 is a cheap but decent quality Sound Level Meter from China. You can get it on Aliexpress for $25-30, for example here: https://www.aliexpress.com/item/32328084637.html
 
+![WS1361](https://github.com/mepster/wensn/blob/master/WS1361.png)
+
 This Python (3) library lets you set the modes of the WS1361, and read the current sound level.
 
 The WS1361 can read with 'A' or 'C' sound weighting, and 'fast' or 'slow' averaging. The library uses the default of 'A' and 'slow'.
