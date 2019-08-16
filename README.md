@@ -72,7 +72,6 @@ sudo pip3 install pyusb
 ```
 sudo python3 wensn.py
 ```
-but this is generally not a great security practice.
 
 ## Install the service so it runs after reboot:
 
@@ -90,8 +89,7 @@ systemctl status wensn.service
 ```
 
 The service runs as user pi (not root), so you have to get the device
-permissions right (as above). Alternatively, you can change the wensn.service file so it runs as root.
-
+permissions right (as above). Alternatively, you can change the wensn.service file so it runs as root, but this is generally not a great security practice.
 
 ## LogRoll
 I also include a python class called LogRoll. This class opens a log file so that you can write SPL values to it. If the filename you provide changes, it rolls over to a new log. I include the date and hour, but not the minutes and seconds, in the filename; this way, when the hour changes, the log file rolls over. The result is a set of timestamped ("hourstamped") log files, each containing all the data for a given hour.
