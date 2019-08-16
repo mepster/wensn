@@ -1,5 +1,7 @@
 import usb.core
 
+# Inspired by ebswift, https://www.ebswift.com/reverse-engineering-spl-usb.html
+
 # The Wensn WS1381B answers these bRequests
 # 1 seems to be constant - array of 2 bytes returned
 # 2 readMode - array of 1 byte returned
