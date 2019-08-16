@@ -75,6 +75,9 @@ sudo python3 wensn.py
 but this is generally not a great security practice.
 
 ## Install the service so it runs after reboot:
+
+Check out the wensn.service file and adjust the WorkingDirectory, and the path in ExecStart for your setup. If you are not on a Raspberry Pi and running as the default user (pi), you should also adjust the User. Then install the service:
+
 ```
 sudo cp wensn.service /etc/systemd/system
 sudo systemctl enable wensn.service
