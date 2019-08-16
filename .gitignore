@@ -1,6 +1,5 @@
 .DS_Store
 .vs
-Secrets.h*
 *~
 *.bin
 __pycache__
