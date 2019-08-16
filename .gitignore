@@ -6,3 +6,4 @@ Secrets.h*
 __pycache__
 logs
 plots
+.idea/
