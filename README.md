@@ -1,4 +1,6 @@
 
+Reading the Wendn WS1361 Sound Pressure Level Meter over USB on the Raspberry Pi
+
 ** Install required python library:
 
 pip3 install pyusb
