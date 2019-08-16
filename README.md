@@ -60,7 +60,9 @@ seeing which new file appears when you plug in the device.)
 That means group plugdev can "rw" the device, and I am in that group, so it works.
 
 You can test which rules are being applied with:
+```
 udevadm test $(udevadm info -q path -n /dev/bus/usb/001/023)
+```
 
 (That's how I finally figured out that my file wasn't being read, because it didn't end in ".rules".)
 
