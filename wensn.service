@@ -1,0 +1,17 @@
+[Unit]
+Description=Sound Pressure Level Monitor
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=pi
+WorkingDirectory=/home/pi/Production/wensn
+ExecStart=/usr/bin/python3 /home/pi/Production/wensn/wensn.py
+
+#StandardOutput=syslogConsola               # Output to syslog
+#StandardError=syslogConsola                # Output to syslog
+
+[Install]
+WantedBy=multi-user.target
