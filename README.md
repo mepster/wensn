@@ -49,7 +49,7 @@ groups [your user name]
 
 After you plug in your device, you can check the permissions with:
 ```
-$ ls -l /dev/bus/usb/001/023
+ls -l /dev/bus/usb/001/023
 crw-rw---- 1 root plugdev 189, 23 Aug 16 00:38 /dev/bus/usb/001/023
 ```
 
