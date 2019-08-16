@@ -90,7 +90,7 @@ systemctl status shutdown_button.service
 ```
 
 The service runs as user pi (not root), so you have to get the device
-permissions right. Alternatively, you can change the .service file so it runs as root.
+permissions right (as above). Alternatively, you can change the wensn.service file so it runs as root.
 
 
 ## LogRoll
