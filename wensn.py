@@ -102,7 +102,8 @@ if __name__ == "__main__":
     logroll = LogRoll(logdir="logs")
     while True:
         now = datetime.datetime.now()
-        logroll.open_or_reopen(now.strftime('%Y-%m-%d-%H-%M.log'))
+        # new log every hour
+        logroll.open_or_reopen(now.strftime('%Y-%m-%d-%H.log'))
 
         dB, range, weight, speed = readSPL(dev)
         print("%.2f,%s,%s,%s"
