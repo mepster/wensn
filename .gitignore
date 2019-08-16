@@ -5,3 +5,4 @@ Secrets.h*
 *.bin
 __pycache__
 logs
+plots
