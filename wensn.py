@@ -1,4 +1,3 @@
-import sys
 import usb.core
 
 # The Wensn WS1381B answers these bRequests
@@ -39,7 +38,7 @@ def readMode(dev):
     return(ranges[rangeN], weights[weightN],
            speeds[speedN], maxModes[maxModeN])
 
-def setMode(dev, range="30-80", speed="fast", weight="A", maxMode="instant"):
+def setMode(dev, range="30-80", speed="slow", weight="A", maxMode="instant"):
     rangeN = ranges[0:4].index(range)
     # For rangeN, setting over USB supports only 2 bits of range,
     #   although 7 values (0 to 6) can be set with buttons on unit.
@@ -73,19 +72,44 @@ def readSPL(dev):
         peak = dB
     return(dB, ranges[rangeN], weights[weightN], speeds[speedN])
 
+
 if __name__ == "__main__":
+    import os
     import time
     import datetime
+
+    class LogRoll():
+        def __init__(self, logdir):
+            try:
+                os.stat(logdir)
+            except:
+                os.mkdir(logdir)
+            self.logdir = logdir
+            self.oldlogname = None
+            self.fp = None
+
+        def open_or_reopen(self, logname):
+            # this reopens a new file whenever the name changes
+            if (logname != self.oldlogname):
+                self.oldlogname = logname
+                if self.fp and not self.fp.closed:
+                    self.fp.close()
+                self.fp = open(self.logdir+"/"+logname, "a+")
 
     dev = connect()
     setMode(dev)
 
+    logroll = LogRoll(logdir="logs")
     while True:
+        now = datetime.datetime.now()
+        logroll.open_or_reopen(now.strftime('%Y-%m-%d-%H-%M.log'))
+
         dB, range, weight, speed = readSPL(dev)
-        print("%.2f,%s,%s,%s,%s"
-              % (dB, range, weight, speed,
-                 datetime.datetime.now().strftime('%Y,%m,%d,%H,%M,%S')))
-        #print(peak)
+        print("%.2f,%s,%s,%s"
+              % (dB, weight, speed, now.strftime('%Y,%m,%d,%H,%M,%S')),
+              file = logroll.fp)
+
+        logroll.fp.flush()
         time.sleep(1)
 
 
