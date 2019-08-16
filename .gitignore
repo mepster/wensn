@@ -3,3 +3,4 @@
 Secrets.h*
 *~
 *.bin
+__pycache__
