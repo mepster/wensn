@@ -98,4 +98,4 @@ I also include a python class called LogRoll. This class opens a log file so tha
 
 ## Credits:
 
-Thanks to ebswift https://www.ebswift.com/reverse-engineering-spl-usb.html for the first go at reverse engineering this device. He figured out bRequest 4 (reading SPLs). Starting from his work, I figured out bRequests 2 and 3 (reading and setting modes). The device has an SD card for logging, so there may be USB commands to read log files from the SD card. Possibly there is more reverse engineering to be done.
+Thanks to ebswift https://www.ebswift.com/reverse-engineering-spl-usb.html for the first crack at reverse engineering this device. This library includes reading the SPL value (bRequest 4), and setting and reading the device modes (bRequests 2 and 3). The device has an SD card for logging, so there may be USB commands to read log files from the SD card. Possibly there is more reverse engineering to be done.
