@@ -1,7 +1,7 @@
 
 # Reading the Wensn WS1361 Sound Pressure Level (SPL) Meter over USB (on the Raspberry Pi)
 
-The Wensn WS1361 is a cheap but decent quality Sound Level Meter from China. You can get it on Aliexpress for $25-30, for example here: https://www.aliexpress.com/item/32328084637.html Make sure you get the one with the USB cable.
+The Wensn WS1361 is a cheap but decent quality Sound Level Meter from China. You can get it on Aliexpress for $25-30, for example here: https://www.aliexpress.com/item/32328084637.html Make sure you get the one with the USB cable or you won't be able to talk to it. (Usefully, the device can be powered over USB without batteries installed.)
 
 ![WS1361](https://github.com/mepster/wensn/blob/master/WS1361.png)
 
