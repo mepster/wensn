@@ -94,7 +94,7 @@ The service runs as user pi (not root), so you have to get the device
 permissions right (as above). Alternatively, you can change the wensn.service file so it runs as root, but this is generally not a great security practice.
 
 ## LogRoll
-I also include a python class called LogRoll. This class opens a log file so that you can write SPL values to it. If the filename you provide changes, it rolls over to a new log file. In the filename, I include the date and hour, but not the minutes and seconds; this way, when the hour changes, the log file automatically rolls over. The result is a set of timestamped ("hourstamped") log files, each containing all the data for a given hour.
+I also include a python class called LogRoll. This class opens a log file so that you can write SPL values to it. If the filename you provide changes, it rolls over to a new log file. In the filename, I like to include the date and hour, but not the minutes and seconds; this way, when the hour changes, the log file automatically rolls over. The result is a set of timestamped ("hourstamped") log files, each containing all the data for a given hour.
 
 ## Credits:
 
