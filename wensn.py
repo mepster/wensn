@@ -16,7 +16,7 @@ maxModes = ["instant", "max"]
 
 def connect():
     dev = usb.core.find(idVendor=0x16c0, idProduct=0x5dc)
-    assert dev is not None
+    assert dev is not None, "Is your sound meter plugged in to USB?"
     print(dev)
     return dev
 
