@@ -40,18 +40,15 @@ def readMode(dev):
     return(ranges[rangeN], weights[weightN],
            speeds[speedN], maxModes[maxModeN])
 
-def setMode(dev, range="30-80", speed="slow", weight="A", maxMode="instant"):
-    rangeN = ranges[0:4].index(range)
-    # For rangeN, setting over USB supports only 2 bits of range,
-    #   although 7 values (0 to 6) can be set with buttons on unit.
+def setMode(dev, range="30-130", speed="slow", weight="A", maxMode="instant"):
+    rangeN = ranges.index(range)
     speedN = speeds.index(speed)
     weightN = weights.index(weight)
     maxModeN = maxModes.index(maxMode)
 
     print("setMode: range:%s weight:%s speed:%s maxMode:%s" %
           (range, weight, speed, maxMode))
-    #wvalue = rangeN | weightN<<3 | speedN<<4 | maxModeN<<5
-    wvalue = (rangeN&3) | (weightN&1)<<3 | (speedN&1)<<4 | (maxModeN&1)<<5
+    wvalue = rangeN | (weightN&1)<<3 | (speedN&1)<<4 | (maxModeN&1)<<5
     # Function of bits 6 and 7 is unknown (nothing?)
 
     dev.ctrl_transfer(0xC0, 3, wvalue, 0, 200)
@@ -83,7 +80,7 @@ if __name__ == "__main__":
     # connect to WS1381 over USB
     dev = connect()
 
-    # set default modes: "A" weighting, "slow"
+    # set default modes: range="30-130", speed="slow", weight="A", maxMode="instant"
     setMode(dev)
 
     log = logroll.LogRoll(logdir="logs")
@@ -101,6 +98,3 @@ if __name__ == "__main__":
 
         log.fp.flush()
         time.sleep(1)
-
-
-
